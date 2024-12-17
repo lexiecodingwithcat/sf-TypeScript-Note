@@ -13,7 +13,9 @@ var user1;
 user1 = new Person('David');
 user1.greet('Hi, I am ');
 var currentSnow = /** @class */ (function () {
-    function currentSnow() {
+    function currentSnow(loc, temp) {
+        this.location = loc;
+        this.tempareture = temp;
     }
     return currentSnow;
 }());

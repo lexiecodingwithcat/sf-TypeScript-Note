@@ -34,6 +34,10 @@ interface Snow extends Winter{
 class currentSnow implements Snow{
     location:string;
     tempareture: string;
+    constructor(loc: string, temp: string){
+        this.location = loc;
+        this.tempareture = temp;
+    }
 }
 
 //we can also use interface as a function type
