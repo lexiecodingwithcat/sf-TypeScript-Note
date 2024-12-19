@@ -71,3 +71,67 @@ function useVehicle(v: Vehicle){
 }
 //we can use instanceof in classes but no interface since interface wont be compiled in JS file
 useVehicle(v2);
+
+//discriminated union 
+interface Bird{
+    //literal types, the animal must be bird
+    type:'bird';
+    flyingSpeed: Number;
+}
+interface Horse{
+    type:'horse';
+    runningSpeed:Number;
+}
+type Animal = Bird | Horse;
+function moveAnimal(animal: Animal){
+    let speed;
+    switch(animal.type){
+    case 'bird':
+        speed = animal.flyingSpeed;
+        break;
+    case 'horse':
+        speed = animal.runningSpeed;
+        break;
+    }
+    console.log('Moving at speed:'+ speed);
+}
+const a1 : Animal = {
+    type: 'bird',
+    flyingSpeed:30
+}
+moveAnimal(a1);
+
+//type casting
+// ts doesn't know this is an input element, it only knows this is a HTMLelement
+// const userInputElement = document.getElementById('user-input');
+//so we have to covert it to input element
+//option 1: 
+// const userInputElement = <HTMLInputElement> document.getElementById('user-input');
+//option 2:
+const userInputElement = document.getElementById("user-input")! as HTMLInputElement;
+userInputElement.value = 'Hi there';
+
+//if we are not sure whether the element currenly is null or not
+const userInput = document.getElementById("user-input");
+//check null
+if(userInput){
+    (userInput as HTMLInputElement).value = 'hi there';
+}
+
+
+//index type
+// when we need an object but dont sure what and how many properties will include
+interface ErrorContainer{
+    //the name of the property should be string
+    //and also the value of it should be string
+    [prop: string]:string;
+    //if so we can't have properties with other types
+    // id:number;  //ERROR
+
+}
+
+const errorBag: ErrorContainer={
+    email:"an email",
+    // number can be interpreted as string, so using number as key type is ok, but reverse it wont work
+    1: 'Not a valid email'
+}

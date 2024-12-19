@@ -54,3 +54,35 @@ function useVehicle(v) {
 }
 //we can use instanceof in classes but no interface since interface wont be compiled in JS file
 useVehicle(v2);
+function moveAnimal(animal) {
+    var speed;
+    switch (animal.type) {
+        case 'bird':
+            speed = animal.flyingSpeed;
+            break;
+        case 'horse':
+            speed = animal.runningSpeed;
+            break;
+    }
+    console.log('Moving at speed:' + speed);
+}
+var a1 = {
+    type: 'bird',
+    flyingSpeed: 30
+};
+moveAnimal(a1);
+//type casting
+// ts doesn't know this is an input element, it only knows this is a HTMLelement
+// const userInputElement = document.getElementById('user-input');
+//so we have to covert it to input element
+//option 1: 
+// const userInputElement = <HTMLInputElement> document.getElementById('user-input');
+//option 2:
+var userInputElement = document.getElementById("user-input");
+userInputElement.value = 'Hi there';
+//if we are not sure whether the element currenly is null or not
+var userInput = document.getElementById("user-input");
+//check null
+if (userInput) {
+    userInput.value = 'hi there';
+}
