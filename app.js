@@ -86,3 +86,14 @@ var userInput = document.getElementById("user-input");
 if (userInput) {
     userInput.value = 'hi there';
 }
+var errorBag = {
+    email: "an email",
+    // number can be interpreted as string, so using number as key type is ok, but reverse it wont work
+    1: 'Not a valid email'
+};
+function addNum(a, b) {
+    if (typeof a === 'string' || typeof b === 'string') {
+        return a.toString() + b.toString;
+    }
+    return a + b;
+}

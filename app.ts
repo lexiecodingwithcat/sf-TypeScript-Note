@@ -135,3 +135,20 @@ const errorBag: ErrorContainer={
     // number can be interpreted as string, so using number as key type is ok, but reverse it wont work
     1: 'Not a valid email'
 }
+
+
+//function overloads
+//if the function is union type, the return value is union type as well
+type addCombinable= string | number; 
+function addNum(a:number, b:number):number;
+function addNum(a:string, b:string):string;
+function addNum(a:number, b:string):string;
+function addNum (a: addCombinable, b: addCombinable ){
+    if(typeof a === 'string' || typeof b === 'string'){
+        return a.toString()+b.toString
+    }
+    return a + b;
+}
+const result = addNum('Max', 'Well');
+//so the result is able to use methods for string
+result.split('');
