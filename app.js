@@ -97,3 +97,6 @@ function addNum(a, b) {
     }
     return a + b;
 }
+var result = addNum('Max', 'Well');
+//so the result is able to use methods for string
+result.split('');
